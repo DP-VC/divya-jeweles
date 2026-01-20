@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Luxury Gold & Black Theme */
+    --background: 40 6% 4%;
+    --foreground: 43 27% 94%;
+
+    --card: 40 8% 8%;
+    --card-foreground: 43 27% 94%;
+
+    --popover: 40 8% 6%;
+    --popover-foreground: 43 27% 94%;
+
+    --primary: 43 74% 52%;
+    --primary-foreground: 40 6% 4%;
+
+    --secondary: 40 8% 12%;
+    --secondary-foreground: 43 27% 94%;
+
+    --muted: 40 6% 15%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 43 74% 52%;
+    --accent-foreground: 40 6% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 43 27% 94%;
+
+    --border: 40 15% 20%;
+    --input: 40 15% 20%;
+    --ring: 43 74% 52%;
+
+    --radius: 0.5rem;
+
+    /* Custom Luxury Colors */
+    --gold: 43 74% 52%;
+    --gold-light: 43 80% 65%;
+    --gold-dark: 43 70% 40%;
+    --ivory: 43 27% 96%;
+    --deep-black: 0 0% 4%;
+    --charcoal: 40 6% 10%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(43, 74%, 42%) 0%, hsl(43, 80%, 60%) 50%, hsl(43, 74%, 45%) 100%);
+    --gradient-gold-shimmer: linear-gradient(90deg, transparent 0%, hsl(43, 80%, 70%) 50%, transparent 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(40, 6%, 4%) 0%, hsl(40, 8%, 8%) 100%);
+    --gradient-radial: radial-gradient(ellipse at center, hsl(40, 8%, 12%) 0%, hsl(40, 6%, 4%) 70%);
+
+    /* Shadows */
+    --shadow-gold: 0 0 30px hsl(43, 74%, 52%, 0.3);
+    --shadow-gold-intense: 0 0 60px hsl(43, 74%, 52%, 0.5);
+    --shadow-elegant: 0 25px 50px -12px hsl(0, 0%, 0%, 0.6);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+  }
+
+  .font-display {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-elegant {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+@layer components {
+  /* Gold shimmer animation */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-gold-shimmer);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+  }
+
+  /* Gold text gradient */
+  .text-gold-gradient {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gold glow effect */
+  .glow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .glow-gold-intense {
+    box-shadow: var(--shadow-gold-intense);
+  }
+
+  /* Glass effect */
+  .glass {
+    background: hsl(40, 8%, 8%, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(43, 74%, 52%, 0.1);
+  }
+
+  .glass-gold {
+    background: hsl(43, 74%, 52%, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(43, 74%, 52%, 0.2);
+  }
+
+  /* Animated gold border */
+  .border-gold-animated {
+    position: relative;
+  }
+
+  .border-gold-animated::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-gold);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Pulse gold animation */
+  .pulse-gold {
+    animation: pulseGold 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGold {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(43, 74%, 52%, 0.4); }
+    50% { box-shadow: 0 0 0 15px hsl(43, 74%, 52%, 0); }
+  }
+
+  /* Gold underline animation */
+  .underline-gold {
+    position: relative;
+  }
+
+  .underline-gold::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gradient-gold);
+    transition: width 0.3s ease;
+  }
+
+  .underline-gold:hover::after {
+    width: 100%;
+  }
+
+  /* Particles background */
+  .particles-bg {
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, hsl(43, 74%, 52%, 0.3), transparent),
+      radial-gradient(2px 2px at 40px 70px, hsl(43, 74%, 52%, 0.2), transparent),
+      radial-gradient(1px 1px at 90px 40px, hsl(43, 74%, 52%, 0.4), transparent),
+      radial-gradient(2px 2px at 130px 80px, hsl(43, 74%, 52%, 0.2), transparent),
+      radial-gradient(1px 1px at 160px 120px, hsl(43, 74%, 52%, 0.3), transparent);
+    background-size: 200px 200px;
+    animation: particleFloat 20s linear infinite;
+  }
+
+  @keyframes particleFloat {
+    0% { background-position: 0 0; }
+    100% { background-position: 200px 200px; }
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(10px); }
+    60% { transform: translateY(5px); }
+  }
+
+  /* Image reveal animation */
+  .reveal-mask {
+    clip-path: inset(0 100% 0 0);
+    animation: revealMask 1.5s ease forwards;
+  }
+
+  @keyframes revealMask {
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  /* 3D tilt effect */
+  .tilt-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .tilt-3d:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+  }
+
+  /* Shine sweep */
+  .shine-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine-sweep::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(43, 80%, 70%, 0.3), transparent);
+    transform: skewX(-25deg);
+    transition: left 0.6s ease;
+  }
+
+  .shine-sweep:hover::before {
+    left: 125%;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
